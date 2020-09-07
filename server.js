@@ -56,8 +56,8 @@ app.get('/', (req, res, next) => {
 	res.status(200).json({ message: 'OK' });
 });
 
-require('./router/user.route')(app);
-require('./router/product.route')(app);
+require('./routes/user.route')(app);
+require('./routes/product.route')(app);
 
 
 app.listen(PORT, () => console.log(`Listening on port ${PORT}`));

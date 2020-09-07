@@ -1,6 +1,6 @@
-###### NODEJS-EXPRESS-SERVER (CRUD) ######
+# NODEJS-EXPRESS-SERVER (CRUD) #
 
-### LIST OF COMPONENTS ###
+## LIST OF COMPONENTS ##
 - CRUD
 - SIGN-UP AND SIGN_IN (JWT + PASSPORT)
 - DATABASE:
@@ -12,12 +12,13 @@
 
 
 
-### DESCRIPTION OF THE API's ###
-# SIGN-UP #
+## DESCRIPTION OF THE API's ##
+### SIGN-UP ###
 
-HTTP Method: POST
+HTTP Method: POST\
 API: http://localhost:3001/api/auth/signup
 
+```json
 {
 	"name": "admin",
 	"username": "admin",
@@ -26,83 +27,89 @@ API: http://localhost:3001/api/auth/signup
 	"roles": "Admin",
 	"email": "email@email.com"
 }
-
+```
 
 NOTE: There are 3 Roles defined:
-	- Admin
-	- Roles 1
-	- Roles 2
+
+- Admin
+- Roles 1
+- Roles 2
 
 
-# SIGN-IN #
+### SIGN-IN ###
 
-HTTP Method: POST
+HTTP Method: POST\
 API: http://localhost:3001/api/auth/signin
 
+```json
 {
 	"username": "user_name",
 	"password": "password"
 }
+```
 
+### GET ALL PRODUCTS FOR SPECIFIC USER ###
 
-# GET ALL PRODUCTS FOR SPECIFIC USER #
-
-HTTP Method: GET
+HTTP Method: GET\
 API: http://localhost:3001/api/get_product/:id_user
 
 Also it needs to user add new header:
 
-Key: Authorization
+Key: Authorization\
 Value: JWT 'Here_TOKEN'
 
 NOTE: 'Here_TOKEN', you\'ll obtain the token after you are logged (replace it without quotes)
 
 
-# INSERT/CREATE a new product #
+### INSERT/CREATE a new product ###
 
-HTTP Method: POST
+HTTP Method: POST\
 API: http://localhost:3001/api/create_product/
 
+```json
 {
     "name_product": "product 1",
     "id_user": 1
 }
+```
 
 Also it needs to user add new header:
 
-Key: Authorization
+Key: Authorization\
 Value: JWT 'Here_TOKEN'
 
 NOTE: 'Here_TOKEN', you\'ll obtain the token after you are logged (replace it without quotes)
 
 
-# UPDATE a product #
+### UPDATE a product ###
 
-HTTP Method: PUT
+HTTP Method: PUT\
 API: http://localhost:3001/api/update_product/
 
+```json
 {
     "name_product": "product 1",
     "id_user": 1,
     "id_product": 1
 }
+```
 
 Also it needs to user add new header:
 
-Key: Authorization
+Key: Authorization\
 Value: JWT 'Here_TOKEN'
 
 NOTE: 'Here_TOKEN', you\'ll obtain the token after you are logged (replace it without quotes)
 
 
-# DELETE a product #
+### DELETE a product ###
 
-HTTP Method: DELETE
+HTTP Method: DELETE\
 API: http://localhost:3001/api/delete_product/:id_user/:id_product
 
 Also it needs to user add new header:
 
-Key: Authorization
+Key: Authorization\
 Value: JWT 'Here_TOKEN'
 
 NOTE: 'Here_TOKEN', you\'ll obtain the token after you are logged (replace it without quotes)

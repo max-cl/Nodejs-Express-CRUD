@@ -12,7 +12,7 @@
     "url": ""
   },
   "author": "max-cl",
-  "license": "ISC",
+  "license": "GPL-3.0",
   "bugs": {
     "url": "https://github.com/max-cl/Nodejs-Express-CRUD/issues"
   },

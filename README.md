@@ -1,18 +1,18 @@
 # NODEJS-EXPRESS-SERVER (CRUD) #
 
-## LIST OF COMPONENTS ##
+## Components ##
 - CRUD
-- SIGN-UP AND SIGN_IN (JWT + PASSPORT)
-- DATABASE:
+- Sign-up and Sign-in (JWT + Passport)
+- Database:
 	- Postgres (Sequelize ORM)
-- Validations:
+- Validation:
 	- Joi
 - Email:
 	- Nodemailer
 
 
 
-## DESCRIPTION OF THE API's ##
+## Description of the API's ##
 ### SIGN-UP ###
 
 HTTP Method: POST\
@@ -48,7 +48,7 @@ API: http://localhost:3001/api/auth/signin
 }
 ```
 
-### GET ALL PRODUCTS FOR SPECIFIC USER ###
+### GET-ALL products of a specific user ###
 
 HTTP Method: GET\
 API: http://localhost:3001/api/get_product/:id_user

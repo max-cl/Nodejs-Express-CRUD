@@ -48,10 +48,10 @@ API: http://localhost:3001/api/auth/signin
 }
 ```
 
-### GET-ALL products of a specific user ###
+### GET-ALL todo of a specific user ###
 
 HTTP Method: GET\
-API: http://localhost:3001/api/get_product/:id_user
+API: http://localhost:3001/api/get_todo/:id_user
 
 Also it needs to user add new header:
 
@@ -61,14 +61,14 @@ Value: JWT 'Here_TOKEN'
 NOTE: 'Here_TOKEN', you\'ll obtain the token after you are logged (replace it without quotes)
 
 
-### INSERT/CREATE a new product ###
+### INSERT/CREATE a new todo ###
 
 HTTP Method: POST\
-API: http://localhost:3001/api/create_product/
+API: http://localhost:3001/api/create_todo/
 
 ```json
 {
-    "name_product": "product 1",
+    "title": "todo 1",
     "id_user": 1
 }
 ```
@@ -81,16 +81,17 @@ Value: JWT 'Here_TOKEN'
 NOTE: 'Here_TOKEN', you\'ll obtain the token after you are logged (replace it without quotes)
 
 
-### UPDATE a product ###
+### UPDATE a todo ###
 
 HTTP Method: PUT\
-API: http://localhost:3001/api/update_product/
+API: http://localhost:3001/api/update_todo/
 
 ```json
 {
-    "name_product": "product 1",
+    "title": "Task 1",
     "id_user": 1,
-    "id_product": 1
+    "id": 1,
+    "done": true
 }
 ```
 
@@ -102,10 +103,10 @@ Value: JWT 'Here_TOKEN'
 NOTE: 'Here_TOKEN', you\'ll obtain the token after you are logged (replace it without quotes)
 
 
-### DELETE a product ###
+### DELETE a todo ###
 
 HTTP Method: DELETE\
-API: http://localhost:3001/api/delete_product/:id_user/:id_product
+API: http://localhost:3001/api/delete_todo/:id_user/:id
 
 Also it needs to user add new header:
 

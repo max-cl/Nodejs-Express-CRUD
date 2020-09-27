@@ -1,9 +1,10 @@
-exports.Helper_1 = (products) => {
+exports.Helper_1 = (todo) => {
 
-    let data = products.map(d => { 
+    let data = todo.map(d => { 
         return { 
-            id_product: d.id_product,
-            name_product: d.name_product
+            id: d.id,
+            title: d.title,
+            done: d.done
         }; 
     });
 

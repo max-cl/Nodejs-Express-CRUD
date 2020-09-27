@@ -1,12 +1,16 @@
 module.exports = (sequelize, Sequelize) => {
-	const Product = sequelize.define('product', {
-        id_product: {
+	const Todo = sequelize.define('todo', {
+        id: {
             type: Sequelize.INTEGER,
             primaryKey: true,
             autoIncrement: true
         },
-        name_product: {
+        title: {
             type: Sequelize.STRING,
+            allowNull: false
+        },
+        done: {
+            type: Sequelize.BOOLEAN,
             allowNull: false
         },
         createdAt: {
@@ -21,5 +25,5 @@ module.exports = (sequelize, Sequelize) => {
         }
 	});
     
-	return Product;
+	return Todo;
 }

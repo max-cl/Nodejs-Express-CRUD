@@ -10,7 +10,9 @@ const env = {
         min: 0,
         acquire: 30000,
         idle: 10000
-    }
+    },
+    secret: process.env.JWT_SECRET,
+    ROLEs: ['ADMIN', 'ROLE_1', 'ROLE_2']
 };
    
 module.exports = env;

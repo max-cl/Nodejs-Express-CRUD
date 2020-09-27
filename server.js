@@ -17,28 +17,33 @@ dotenv.config();
 //  	console.log('Update the Databse structure { alter: true }');
 // });
 
- // force: true will drop the table if it already exists
- /*db.sequelize.sync({force: true}).then(() => {
-   console.log('Drop and Resync with { force: true }');
-   initial();
- });
+ function createRoles(){
+ 	Role.create({ id: 1, name: "ADMIN" });
+ 	Role.create({ id: 2, name: "ROLE_1" });
+	Role.create({ id: 3, name: "ROLE_2" });
+}
 
- function initial(){
- 	Role.create({
- 		id: 1,
- 		name: "ADMIN"
- 	});
-	
- 	Role.create({
- 		id: 2,
- 		name: "ROLE_1"
- 	});
-	
-	Role.create({
- 		id: 3,
- 		name: "ROLE_2"
- 	});
- }*/
+// CREATE THE TABLES AND INSERT THE ROLES
+function syncDB () {
+	  Role.count({ where: { id_role: 1 } })
+		  .then(count => {
+		    if(count === 0){
+		    	db.sequelize.sync({force: false}).then(() => {
+				   console.log('Drop and Resync with { force: true }');
+				   createRoles();
+				}).catch(error => console.log("ERROR"));
+		    }
+		}).catch(function(error){
+			console.log("The table doesn't exists");
+			db.sequelize.sync({force: true}).then(() => {
+			   console.log('Drop and Resync with { force: true }');
+			   createRoles();
+			});
+		}
+	);
+}
+
+syncDB();
 
 const PORT = process.env.PORT || 3001;
 
@@ -57,7 +62,7 @@ app.get('/', (req, res, next) => {
 });
 
 require('./routes/user.route')(app);
-require('./routes/product.route')(app);
+require('./routes/todo.route')(app);
 
 
 app.listen(PORT, () => console.log(`Listening on port ${PORT}`));

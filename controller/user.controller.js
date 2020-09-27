@@ -8,7 +8,7 @@ const dotenv = require('dotenv');
 dotenv.config();
 
 //Config
-const jwtSecret = require('../config/config');
+const jwtSecret = require('../config/env');
 
 //Models
 const db = require('../config/db.config');

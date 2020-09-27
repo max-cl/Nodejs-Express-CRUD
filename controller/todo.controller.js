@@ -2,13 +2,13 @@ const passport = require('passport');
 
 //Models
 const db = require('../config/db.config');
-const Product = db.product;
+const Todo = db.todo;
 
 //Helpers
 const helper = require('../helper');
 
 
-exports.getProduct = async (req, res, next) => {
+exports.getTodo = async (req, res, next) => {
     passport.authenticate('jwt', { session: false }, async (err, user, info) => {
         if (err) console.log(err);
         if (info !== undefined) {
@@ -18,15 +18,19 @@ exports.getProduct = async (req, res, next) => {
             try {
 
                 const { id_user } = req.params;
-                const products = await Product.findAll();
+		const todo = await Todo.findAll({
+                    where: {
+                        id_user
+                    }
+                });
                 
-                if (products.length > 0) {
-                    const data = helper.Helper_1(products);
+                if (todo.length > 0) {
+                    const data = helper.Helper_1(todo);
                     console.log('DATA: ', data);
                     res.status(200).json({ data });
                 } else {
-                    console.log('There is not products for this user');
-                    res.status(404).send('There is not products for this user');
+                    console.log('There is not todo for this user');
+                    res.status(404).send('There is not todo for this user');
                 }
             } catch (e) {
                 console.error(e);
@@ -39,7 +43,7 @@ exports.getProduct = async (req, res, next) => {
 };
 
 
-exports.createProduct = async (req, res, next) => {
+exports.createTodo = async (req, res, next) => {
     passport.authenticate('jwt', { session: false }, async (err, user, info) => {
         if (err) console.log(err);
         if (info !== undefined) {
@@ -48,10 +52,10 @@ exports.createProduct = async (req, res, next) => {
         } else if (parseInt(user.id_user,10) === parseInt(req.body.id_user,10)) {
             try {
 
-                const { id_user, name_product } = req.body;
-                const newProduct = await Product.create({ name_product: name_product, id_user: id_user });
-                console.log('DATA: ', newProduct.dataValues);
-                res.status(200).json(newProduct);
+                const { id_user, title, done } = req.body;
+                const newTodo = await Todo.create({ title, id_user, done: false });
+                console.log('DATA: ', newTodo.dataValues);
+                res.status(200).json(newTodo);
 
             } catch (e) {
                 console.error(e);
@@ -64,7 +68,7 @@ exports.createProduct = async (req, res, next) => {
 };
 
 
-exports.updateProduct = async (req, res, next) => {
+exports.updateTodo = async (req, res, next) => {
     passport.authenticate('jwt', { session: false }, async (err, user, info) => {
         if (err) console.log(err);
         if (info !== undefined) {
@@ -73,19 +77,19 @@ exports.updateProduct = async (req, res, next) => {
         } else if (parseInt(user.id_user,10) === parseInt(req.body.id_user,10)) {
             try {
                 
-                const { name_product, id_product } = req.body;
-                const updatedProduct = await Product.update({ name_product: name_product }, {
+                const { title, id, done } = req.body;
+                const updateTodo = await Todo.update({ title, done }, {
                     where: {
-                        id_product: id_product
+                        id
                     }
                 });
                 
-                if(updatedProduct[0] === 1){
-                    console.log('Product updated.',);
-                    res.status(200).json({ message: 'Product updated.' });
+                if(updateTodo[0] === 1){
+                    console.log('Todo updated.',);
+                    res.status(200).json({ message: 'Todo updated.' });
                 } else {
-                    console.log('The product doesn\'t exist.');
-                    res.status(200).json({ message: 'The product ID: '+id_product+' doesn\'t exist.' });
+                    console.log('The Todo doesn\'t exist.');
+                    res.status(200).json({ message: 'The Todo ID: '+id+' doesn\'t exist.' });
                 }
             } catch (e) {
                 console.error(e);
@@ -99,7 +103,7 @@ exports.updateProduct = async (req, res, next) => {
 
 
 
-exports.deleteProduct = async (req, res, next) => {
+exports.deleteTodo = async (req, res, next) => {
     passport.authenticate('jwt', { session: false }, async (err, user, info) => {
         if (err) console.log(err);
         if (info !== undefined) {
@@ -108,20 +112,20 @@ exports.deleteProduct = async (req, res, next) => {
         } else if (parseInt(user.id_user,10) === parseInt(req.params.id_user,10)) {
             try {
 
-                const { id_product } = req.params;
-                const deletedProduct = await Product.destroy({
+                const { id } = req.params;
+                const deletedTodo = await Todo.destroy({
                     where: {
-                        id_product: id_product
+                        id
                     }
                 });
 
  
-                if(deletedProduct === 1){
-                    console.log('Product deleted.',);
-                    res.status(200).json({ message: 'Product deleted.' });
+                if(deletedTodo === 1){
+                    console.log('Todo deleted.',);
+                    res.status(200).json({ message: 'Todo deleted.' });
                 } else {
-                    console.log('The product doesn\'t exist.');
-                    res.status(200).json({ message: 'The product ID: '+id_product+' doesn\'t exist.' });
+                    console.log('The Todo doesn\'t exist.');
+                    res.status(200).json({ message: 'The Todo ID: '+id+' doesn\'t exist.' });
                 }
             } catch (e) {
                 console.error(e);

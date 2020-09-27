@@ -8,8 +8,9 @@ const constants = {
         .required()
         .error(() => 'The values are not right'),*/
     id_user_validation: Joi.number().required(),
-    name_product_validation: Joi.string().required(),
-    id_product_validation: Joi.number().required()
+    title_validation: Joi.string().required(),
+    id_validation: Joi.number().required(),
+    done_validation: Joi.boolean().required()
 }
 
 module.exports = constants;

@@ -1,4 +1,4 @@
-# REACT-NODE-EXPRESS-SERVER (CRUD) #
+# REACT-NODE-EXPRESS-POSTGRES (CRUD) #
 
 ## How to start the project? ##
 

@@ -52,7 +52,7 @@ exports.createTodo = async (req, res, next) => {
         } else if (parseInt(user.id_user,10) === parseInt(req.body.id_user,10)) {
             try {
 
-                const { id_user, title, done } = req.body;
+                const { id_user, title } = req.body;
                 const newTodo = await Todo.create({ title, id_user, done: false });
                 console.log('DATA: ', newTodo.dataValues);
                 res.status(200).json(newTodo);

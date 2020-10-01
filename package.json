@@ -4,8 +4,10 @@
   "description": "",
   "main": "server.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "node server.js"
+    "server": "node server.js",
+    "client": "npm start --prefix client",
+    "dev": "concurrently \"npm run server\" \"npm run client\"",
+    "clientinstall": "npm install --prefix client"
   },
   "repository": {
     "type": "git",
@@ -14,9 +16,9 @@
   "author": "max-cl",
   "license": "GPL-3.0",
   "bugs": {
-    "url": "https://github.com/max-cl/Nodejs-Express-CRUD/issues"
+    "url": ""
   },
-  "homepage": "https://github.com/max-cl/Nodejs-Express-CRUD#readme",
+  "homepage": "",
   "dependencies": {
     "bcrypt": "^3.0.6",
     "body-parser": "^1.19.0",
@@ -34,5 +36,8 @@
     "passport-local": "^1.0.0",
     "pg": "^7.12.1",
     "sequelize": "^5.17.1"
+  },
+  "devDependencies": {
+    "concurrently": "^5.3.0"
   }
 }

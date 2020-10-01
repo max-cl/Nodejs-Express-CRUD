@@ -1,6 +1,16 @@
-# NODEJS-EXPRESS-SERVER (CRUD) #
+# REACT-NODE-EXPRESS-SERVER (CRUD) #
 
-## Components ##
+## How to start the project? ##
+
+npm run clientinstall && npm install
+npm run dev
+
+## Front-end Components ##
+- React
+- Redux
+- Material UI
+
+## Server Components ##
 - CRUD
 - Sign-up and Sign-in (JWT + Passport)
 - Database:

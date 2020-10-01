@@ -1,6 +1,6 @@
 # REACT-NODE-EXPRESS-POSTGRES (CRUD) #
 
-## How to start the project? ##
+## How to run the project? ##
 
 - npm run clientinstall && npm install
 - npm run dev

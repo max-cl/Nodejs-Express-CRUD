@@ -2,8 +2,8 @@
 
 ## How to start the project? ##
 
-npm run clientinstall && npm install
-npm run dev
+- npm run clientinstall && npm install
+- npm run dev
 
 ## Front-end Components ##
 - React
